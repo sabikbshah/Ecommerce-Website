@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+ {% block title %}
+    {{product.name}}
+    {% endblock %}
+
+{% block main-content %}
+
+
+<div class="product_details container my-5 p-3 shadow rounded-4" id="product_details">
+
+
+    <div class="d-md-flex justify-content-evenly  ">
+            <div class="col-md-4">
+                <img src="/{{product.image}}" alt="{{product.name}}" width="100%">
+            </div>
+            <div class="col-md-6">
+                <p class="">
+
+                    <a href="/" class="text-decoration-none text-dark">Home</a> /
+                    <a href="/all-products" class="text-decoration-none text-dark">Products </a> /
+                    {% comment %} <a href="{%all-products%}" class="text-decoration-none text-dark">Products </a> {% endcomment %}
+
+
+                    <small class="text-secondary">{{product.category}}</small> 
+
+
+                </p>
+                <h2> {{product.name}}</h2>
+                <p class="fw-semibold"> Price:
+                    <small><del class="fw-lighter text-secondary">{{product.original_price| floatformat:2}}</del></small>
+                    <span class = "text-secondary me-2">{{product.selling_price | floatformat:2}}</span>
+                    <span class = "bg-warning-subtle text-warning badge">10% off</span>
+                </p>
+                <p class="text-secondary">{{product.s_description}}</p>
+                <hr>
+                <p class="mb-2">
+                {% if product.stock > 1 %}
+                <span class="bg-info px-2 text-white">Instock</span>
+                {% else %}
+                <span class="bg-danger px-2 py-2 text-white">Out of stock</span>
+                {% endif %}
+                </p>
+                <p class="fw-semibold">Size:</p>
+                    <select name = "size" id="size" class="form-select w-25">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+
+                    </select>
+
+                <p>
+                    <a href="#" class="btn bg-success-subtle text-success rounded-4">Add to Wishlist</a>
+                    <a href="/addtocart/{{product.id}}" class="btn bg-warning rounded-4">Add to Cart</a>
+                </p>
+                   
+                
+            </div>
+
+    </div>
+
+    <p> Specification :<br>
+
+        <span class="text-secondary">{{product.l_description}}</span>
+    </p>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+

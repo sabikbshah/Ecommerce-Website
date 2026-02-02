@@ -1,0 +1,128 @@
+
+
+    {% extends "base.html" %}
+    {% load static %}
+
+    {% block main-content %}
+
+
+<div class="container  "  id = "banner1">
+<!-- <div class="container-fluid px-5 pb-5 bg-dark"> -->
+<!-- style="max-height:1000px; max-width:1400px; -->
+
+            <!-- <h1>Explore theres more to excite you!!</h1> -->
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner " >
+            <div class="carousel-item active border border-4" data-bs-interval="10000">
+            <img src="{%static 'images/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-backgroud-for-banner-market-ecommerce-free-vector.jpg' %}" class="d-block w-100 bg-primary" alt="...">
+            </div>
+            <div class="carousel-item border border-4  " data-bs-interval="2000">
+            <img src="{%static 'images/1ee70fe7945459bd7bf384072b2fa4350a406996-1688690586.jpg' %}" class="d-block w-100 bg-primary" alt="...">
+            </div>
+            <div class="carousel-item border border-4  ">
+            <img src="{%static 'images/black-friday-super-sale-facebook-cover-banner-template_120329-5177.avif' %}" class="d-block w-100 bg-primary " alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+</div>
+<div class="bg-success">
+
+            
+
+</div>
+<div class="bg-info mt-3">
+    
+
+    
+    {% comment %} <h1> TRENDING ITEMS </h1>
+
+    <div style="background-color: blue;">{{data.logo.url}}</div>
+
+     <table class="table table-hover table-striped ">
+                <thead class=" text-white text-center" >
+                    
+                    <th>S.No.</th>
+                    <th>Name</th>                
+                    <th>Image</th>
+                    <th>Stocks</th>
+                    
+                    
+                </thead>
+                <tbody >
+                    {% for item in trending_data  %}
+                    <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{item.name}}</td>
+                                
+                               
+                                <td>
+                                    <img src="{{item.image}}" alt="{{item.image}}" width ="125px">
+                                    
+                                </td>
+                                <td>
+                                    {% if item.stock == 0 %}
+                                    <span class=" badge bg-danger" >Advanced Booking currenly sold out!!</span>
+                                    {% elif item.stock < 8 %}
+                                    <span class=" badge bg-warning">Limited dont miss out!! Less Than 5 </span>
+                                    {% else %}
+                                    <span class=" badge bg-success"> {{item.stock}}</span>
+                                    {% endif %}
+
+
+
+                                </td>
+                                
+                                
+                               
+                    </tr>
+                    {% endfor %}
+                    
+                    
+
+                </tbody>
+                
+                </table>
+</div> {% endcomment %}
+
+<div class ="trending mx-5 px-5" id="trending">
+<h2>Trending Items</h2>
+<hr>
+
+    <swiper-container class="mySwiper" init="false" autoplay-delay="2500">
+    {% for item in products %}
+        <swiper-slide class="card my-2 shadow">
+    <!-- <div class="card my-2 shadow "> -->
+            <img src = "/{{item.image}}" class = "" alt="{{item.name}}">
+            <div class="card-body">
+                    <h4 class="card-title">{{item.name}}</h4>
+                    <p class="fw-bold">Price:
+                            <span class='text-secondary'>{{item.original_price | floatformat:2}}</span>
+                            <span class='text-success'>{{item.selling_price | floatformat:2}}</span>
+
+                    </p>
+                    <a href="/product_details/{{item.id}}">View More<i class=" bi bi-arrow-right"></i></a>
+
+            </div>
+
+    <!-- </div> -->
+    </swiper-slide>
+    {% endfor %}
+    </swiper-container>
+
+</div>
+{% comment %} 
+
+ {% endcomment %}
+
+
+    {% endblock %}
+
+  

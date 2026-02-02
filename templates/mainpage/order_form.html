@@ -1,0 +1,36 @@
+
+    {% extends "base.html" %}
+    {% load static %}
+    {% block title %}
+    Order Form |
+    {% endblock %}
+    
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+
+
+
+
+<div class="container my-5" id ='Order_form'>
+    <div class="col-md-5 m-auto shadow p-4 rounded-4 border-info border-4">
+            <form method="POST">
+
+                <h2 class="text-center text-info">CHECKOUT form</h2>
+                <hr>
+                {% csrf_token %}
+                {{orderform | crispy}}
+
+               
+                 <input type="submit" value="Checkout" class="btn btn-info w-100 y-2">
+                
+               
+                
+
+            </form>
+    </div>
+</div>
+
+
+
+    {% endblock %}

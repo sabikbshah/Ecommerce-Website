@@ -1,0 +1,23 @@
+user001 or user003 ->!@#$1234qwer
+1. WORKING WITH URLS
+    base URL where our website homepage starts or, server hosts a page.
+    After each slash "/" follows url path 
+    Some page OPENS with many urls path and some just with single variable path after base url
+    IF
+        same urls are there in website then first match in url pattern list will be called
+        So, they should be differentiated by additional url variable 
+        Now each same url will be will not get to first match but same one with additional url will render their specific page and,
+        another same url without or with different additional url on left side will route to it's specific page
+
+2. url with get request that returns and re-enters same url
+        - example: login form for user to get login user does get request to server
+        - server renders form where user fill and submit 
+        - sumbit re-enters same url but this time does POST request to server.
+        - then same function called again in view.
+
+3. one eg:
+    login using admin goes to redirect('admin/')
+    before admin theres no slash'/' it means it whatever current path is redirect path will be added
+    and request as it.
+    if we want redirect or link in redirect is immediately after index page url then 
+    slash addition required at front redirect(' /admin/ ')

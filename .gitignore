@@ -1,0 +1,27 @@
+
+# Virtual environment
+myenv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django local files
+db.sqlite3
+media/
+
+# IDE
+.vscode/
+*.idea
+
+# System files
+desktop.ini
+.DS_Store
+
+# Images not needed for project
+*.png
+
+# secret keys
+.env

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block main-content %}
+
+
+<div class="container my-5">
+    <div class="col-md-14 shadow p-4 rounded-4 border-top border-info border-4 overflow-auto">
+            
+
+             <div class="d-flex justify-content-between ">
+            <h2 class="text-dark text-center"> All Products</h2> <a href="{% url 'add-products' %}  " ><button class="badge btn btn-warning">Add product</button></a>
+            </div>
+
+            <hr>
+            <table class="table table-hover table-striped ">
+                <thead class=" text-white text-center" >
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Original Price</th>
+                    
+                    <th>Image</th>
+                    <th>Short Description</th>
+                   
+                    <th>Trending</th>
+                    <th>Tags</th>
+                    <th>Stocks</th>
+                    <th>Created At</th>
+                    <th>Action</th>
+                </thead>
+                <tbody >
+                    {% for item in products %}
+                    <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{item.name}}</td>
+                                <td>
+                                    <del>{{item.selling_price}}</del>
+                                    {{item.original_price}}
+                                </td>
+                                
+                                <td>
+                                    <img src="/{{item.image}}" alt="{{item.image}}" width ="65px">
+                                    
+                                </td>
+                                <td>
+                                    {% if item.s_description %}
+                                    <span>{{ item.s_description }}</span>
+                                    {% else %}
+                                    <span class="bg-secondary subtle badge">no content added</span>
+                                    {% endif %}
+                                
+                                
+                                </td>
+                                <!-- <td>{{item.l_description}}</td> -->
+                                <td>
+                                    {% if item.trending  %}
+                                    <span class="bg-success badge"><i class="bi bi-check-circle  bg-success fs-4"></i></span>
+                                    {% else %}
+                                    <span class="bg-danger badge" ><i class="bi bi-x-octagon bg-danger fs-warning fs-4"></i></span>
+                                    {% endif %}
+                                </td>
+                                <td>{{item.tags}}</td>
+                                <td>
+                                    {% if item.stock == 0 %}
+                                    <span class=" badge bg-danger"> Out of stock</span>
+                                    {% elif item.stock < 5 %}
+                                    <span class=" badge bg-warning"> Less Than 5 </span>
+                                    {% else %}
+                                    <span class=" badge bg-success"> {{item.stock}}</span>
+                                    {% endif %}
+
+
+
+                                </td>
+                                <td>{{item.created_at}}</td>
+                                
+                                <td class="d-flex">
+                                <a href=" /vendor/update-product/{{item.id}}" class="btn btn-sm btn-info me-2 fs-5">
+                                        <i class="bi bi-pencil-square"></i></a>
+
+                               
+                                <button class="btn btn-sm btn-danger me-2" 
+                                onclick = "confirmDelete('{{item.id}}')">
+                                        <i class="bi bi-trash"></i></button> 
+                                <!-- <a href="/delete-product/{{item.id}}" class="btn btn-sm btn-danger me-2" 
+                                onclick = "return confirm('item will be removed from the database.\n Are you sure>?')">
+                                        <i class="bi bi-trash"></i></a>  -->
+                                </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+                
+                </table>
+
+   
+
+        </div>
+</div>
+
+
+
+
+{% endblock %}

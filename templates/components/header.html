@@ -1,0 +1,169 @@
+
+  <header>
+  <div class="container-fluid bg-dark text-white">
+
+    <div class="row">
+
+      <div class="col-md-3 py-2 d-flex flex-row">
+        <img src="{{data.logo.url}}" alt = "logo Image"  class = "img-fluid" style="max-height:90px;" >
+        <h3 class="text-center pt-2 pb-1">Our Ecommerce Store</h3>
+      </div>
+      <div class="col-md-6 pt-4 pb-1">
+
+        <div class="input-group">
+          <!-- <div class="input-group w-50"> -->
+          <input type="text" class="form-control" placeholder="INput your search here" aria-label="Recipient’s username"
+            aria-describedby="button-addon2">
+          <button class="btn btn-warning" type="button" id="button-addon2">Search</button>
+        </div>
+
+      </div>
+
+      <!-- USER logins================================================================= -->
+      <div class="col-md-3 pt-2 pb-1 d-flex justify-content-evenly ">
+          <div class = "d-flex col-md-8 justify-content-evenly">
+            {% if user.is_authenticated %}
+              <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                      {{user.username}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                      <!-- <li><a class="dropdown-item" href="/my-orders" type="button">MyOrder</button></li> -->
+                      <li><a class="dropdown-item" href="{%url 'userpage:my-orders'%}" type="button">MyOrder</button></li>
+                      <li><button class="dropdown-item" type="button">Profile</button></li>
+                      <hr class="my-0">
+                      <li><a class="dropdown-item" href="/auth/logout" type="button">Logout</a></li>
+                    </ul>
+              </div>
+
+            {%else%}
+            
+                <div class = "row text-white">
+                 <a href="/auth/login"  class="text-white  ">
+                        <i class="bi bi-box-arrow-in-right fs-3"></i>
+                        
+                      </a>
+                      Login
+                 </div> 
+                <div class = "row text-white">
+                      <a href="/auth/register"  class="text-white ">
+                        <i class="bi bi-person-plus fs-3"></i>
+                       
+                      </a>
+                       Register
+                  </div>
+            {% comment %} </div> {% endcomment %}
+
+            {%endif%}
+        </div>
+        <!-- <a href="#"><i class="bi bi-box-arrow-in-right text-white fs-3"></i></a> -->
+        <!-- <a href="/auth/login"><i class="bi bi-box-arrow-in-right text-white fs-3"></i></a>
+        <a href="/auth/register"><i class="bi bi-person-plus text-white fs-3"></i></a> -->
+        <div class = "row text-white"><a href="{% url 'userpage:cart' %}"><i class="bi bi-cart text-white fs-3"></i></a>CART</div> 
+
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid" style="display:flex;justify-content: center;align-items: center;">
+      <!-- <a class="navbar-brand" href="#">Menu</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %} active {% endif %} " href="/">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link {% if request.path == '/vendor/all-category' %} active {% endif %} " href="/vendor/all-category">Category</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/all-products' %} active {% endif %} " href="{% url 'userpage:all-products' %}">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#" aria-disabled="true">Contact</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+
+      </div>        
+      
+  
+
+    <!-- Customer -->
+   
+    {% comment %} <a href="/auth/register"
+    
+       class="text-white text-decoration-none  p-2 py-3 bg-success"
+       style="display:flex; flex-direction:column; align-items:center;p-3">
+       
+      <span>Register as Customer</span>
+      <i class="bi bi-person-plus fs-3 "></i>
+    </a> {% endcomment %}
+  
+    <!-- Vendor -->
+    
+      <a href="/auth/register"
+        class="text-white text-decoration-none bg-primary  "
+        style="border-radius:3%;align-items:center;justify-content:space-evenly;"
+        >
+         
+        
+     <span class=' px-3'>Register as Vendor</span>
+     <i class="bi bi-person-plus text-black fs-2 px-3 "></i> 
+        
+        {% comment %} <i class="bi bi-person-plus text-black fs-2 "></i> {% endcomment %}
+      </a>
+    
+
+  
+
+       {% comment %} <div style="display:flex; justify-content: space-between;border-5px" class="bg-success" >
+
+                 
+                  <div >
+                      <a href="/auth/register" style="display:flex; flex-direction:column; align-items:center;" class="text-white">
+                        <i class="bi bi-person-plus fs-3"></i></a>Register as Customer
+                  </div>
+                    <div >  
+                      <a href="/auth/register"><i class="bi bi-person-plus text-white fs-2"></i></a>_REGISTER as Vendor</div>
+                    </div>
+      
+
+    </div> {% endcomment %}
+  </nav>
+
+
+</header>
+
+
+
+
+
+
+  <!-- <div class = "d-flex">
+    {% if user.is_%}
+          <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          {{user.username}}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+          <li><button class="dropdown-item" type="button">MyOrder</button></li>
+          <li><button class="dropdown-item" type="button">Profile</button></li>
+          <hr class="my-0">
+          <li><button class="dropdown-item" type="button">Logout</button></li>
+        </ul>
+      </div>
+
+    {%else%}
+
+    {%endif%}
+  </div> -->

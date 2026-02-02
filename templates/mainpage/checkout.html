@@ -1,0 +1,23 @@
+
+    {% extends "base.html" %}
+    {% load static %}
+    {% block title %}
+    StripCheckout |
+    {% endblock %}
+    {% block main-content %}
+
+ <section>
+      <div class="product text-center border p-2">
+        <img src="/{{order.product.image}}" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+          <h3>{{order.product.name}}</h3>
+          <h5>Rs.{{order.product.selling_price}}</h5>
+        </div>
+      </div>
+      <a href="/create_checkout_session/{{order.id}}/{{cart.id}}" class="btn btn-success my-2">Checkout</a>
+      <!-- <form action="/create-checkout-session" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form> -->
+    </section>
+
+    {% endblock %}
