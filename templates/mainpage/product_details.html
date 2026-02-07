@@ -19,8 +19,8 @@
                 <p class="">
 
                     <a href="/" class="text-decoration-none text-dark">Home</a> /
-                    <a href="/all-products" class="text-decoration-none text-dark">Products </a> /
-                    {% comment %} <a href="{%all-products%}" class="text-decoration-none text-dark">Products </a> {% endcomment %}
+                    {% comment %} <!-- <a href="/all-products" class="text-decoration-none text-dark">Products </a> / --> {% endcomment %}
+                     <a href="{%url 'userpage:all-products' %}" class="text-decoration-none text-dark">Products </a> 
 
 
                     <small class="text-secondary">{{product.category}}</small> 

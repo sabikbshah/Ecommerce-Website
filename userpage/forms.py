@@ -4,5 +4,5 @@ from .models import *
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['quantity','phone_no','address','payment_method']
+        fields = ['quantity','phone_no','address','payment_method','size2']
 

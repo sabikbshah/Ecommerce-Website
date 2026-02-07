@@ -75,7 +75,7 @@ def deleteCart(request,cart_id):
     cart_item = Cart.objects.get(id = cart_id)
     cart_item.delete()
     messages.success(request,'items removed successfully')
-    return redirect('cart')
+    return redirect('userpage:cart')
 
 
 def orderForm(request,cart_id,product_id):
@@ -92,7 +92,7 @@ def orderForm(request,cart_id,product_id):
             phone_no = request.POST.get("phone_no")
             address = request.POST.get("address")
             payment_method = request.POST.get('payment_method')
-            
+            size2 = request.POST.get('size2')
 
             order = Order.objects.create(
 
@@ -104,6 +104,7 @@ def orderForm(request,cart_id,product_id):
                 address = address,
                 payment_method = payment_method,
                 payment_status = False,
+                size2 = size2,
             )
 
             if order.payment_method == 'CASH':
@@ -203,10 +204,10 @@ def stripeSuccess(request):
             return redirect('/')
         else:
             messages.error(request,'Payment Failed')
-            return redirect('cart')
+            return redirect('userpage:cart')
     else:
         messages.error(request,'Invalid Session')
-        return redirect('cart')
+        return redirect('userpage:cart')
     
 @login_required
 def myOrders(request):

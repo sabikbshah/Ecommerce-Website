@@ -19,6 +19,12 @@ class Order(models.Model):
         ('CARD','CARD'),
 
     )
+    SIZES = (
+            ('S','S'),
+            ('M','M'),
+            ('L','L')
+            )
+    size2 = models.CharField(max_length=30,choices=SIZES,null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Products,on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)

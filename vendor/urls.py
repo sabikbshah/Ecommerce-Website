@@ -7,5 +7,6 @@ urlpatterns = [
     path('mystore',myStore, name = 'mystore'),
     
     
+    
 
 ]

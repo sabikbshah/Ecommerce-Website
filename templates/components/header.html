@@ -30,13 +30,18 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                       <!-- <li><a class="dropdown-item" href="/my-orders" type="button">MyOrder</button></li> -->
                       <li><a class="dropdown-item" href="{%url 'userpage:my-orders'%}" type="button">MyOrder</button></li>
-                      <li><button class="dropdown-item" type="button">Profile</button></li>
+                        {% if user.vendor.approved %}
+                          <li><a class="dropdown-item" href="{% url 'vendor:mystore' %}" type="button">Profile</a></li>
+
+                        {% else %}
+                          <li><button class="dropdown-item" type="button">Profile</button></li>
+                        {% endif %}
                       <hr class="my-0">
                       <li><a class="dropdown-item" href="/auth/logout" type="button">Logout</a></li>
                     </ul>
               </div>
 
-            {%else%}
+            {% else %}
             
                 <div class = "row text-white">
                  <a href="/auth/login"  class="text-white  ">
@@ -111,7 +116,7 @@
   
     <!-- Vendor -->
     
-      <a href="/auth/register"
+      <a href="/auth/vendor-register"
         class="text-white text-decoration-none bg-primary  "
         style="border-radius:3%;align-items:center;justify-content:space-evenly;"
         >

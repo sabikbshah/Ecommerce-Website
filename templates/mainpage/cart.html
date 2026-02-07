@@ -18,6 +18,7 @@
                     <th class = "col-5">Name</th>
                     <th>Price(Rs.)</th>
                     <th>Image</th>
+                    <th>Size</th>
                     <th>Action </th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <td>
                     <img src="{{item.products.image}}" alt ="{{item.products.name}}" width ='50'>
                     </td>
+                    <td>{{item.products.size}} </td>
                     <td>
                     <a href="/delete-cart/{{item.id}}" class ="btn btn-danger btn-sm badge"><i class="bi bi-trash"></i>Delete
                         
@@ -39,6 +41,7 @@
                     <a href="/order-form/{{item.id}}/{{item.products.id}}" class = "btn btn-warning btn-sm badge">Buy Now
                     </a>
                     </td>
+                    <!-- new addition to check cart's choosen option appears or product's predetermined value appears -->
                     
                 </tr>
                 {% endfor %}

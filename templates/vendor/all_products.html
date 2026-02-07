@@ -1,7 +1,10 @@
-{% extends "base.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block main-content %}
+
+
+{% extends "vendorbase.html" %}
+{% load static%}
+{% block title %}
+{% endblock %}
+{% block vendor_content %}
 
 
 <div class="container my-5">
@@ -9,7 +12,7 @@
             
 
              <div class="d-flex justify-content-between ">
-            <h2 class="text-dark text-center"> All Products</h2> <a href="{% url 'add-products' %}  " ><button class="badge btn btn-warning">Add product</button></a>
+            <h2 class="text-dark text-center"> All Products</h2> <a href="{% url 'vendor-products:add-products' %}  " ><button class="badge btn btn-warning">Add product</button></a>
             </div>
 
             <hr>

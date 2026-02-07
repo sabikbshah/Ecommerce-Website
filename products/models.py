@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator,MaxLengthValidator
+from vendor.models import Vendor
 
 # Create your models here.
 class Category(models.Model):
@@ -17,6 +18,7 @@ class Products(models.Model):
             ('M','M'),
             ('L','L')
             )
+    vendor = models.ForeignKey(Vendor,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     original_price = models.DecimalField(max_digits=10,decimal_places=5)
